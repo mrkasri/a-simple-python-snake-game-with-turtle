@@ -1,6 +1,8 @@
 
 from turtle import Turtle, Screen
 
+from snake import Snake
+
 
 # screen setup
 screen = Screen()
@@ -10,11 +12,12 @@ screen.title('A simple snake game')
 
 
 # set up the starting snake
-start_position = [(0, 0), (-20, 0), (-40, 0)]
-for position in start_position:
-    new_square = Turtle(shape='square')
-    new_square.color('white')
-    new_square.goto(position)
+
+snake = Snake('white')
+
+snake.move('left')
+snake.move('left')
+snake.move('left')
 
 
 screen.exitonclick()
