@@ -2,6 +2,7 @@
 from turtle import Screen
 import time
 from dot_food import DotFood
+from scoreboard import ScoreBoard
 from snake import Snake
 
 
@@ -17,6 +18,7 @@ screen.tracer(1)
 game_on = True
 snake = Snake('white')
 dot = DotFood('blue')
+score = ScoreBoard()
 
 
 # Moving the snake
@@ -35,7 +37,9 @@ while game_on:
 
     # detect collision
     if snake.head.distance(dot) < 15:
+
         dot.refresh()
+        score.increase_score()
 
 
 screen.exitonclick()
