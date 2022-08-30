@@ -11,7 +11,7 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor('black')
 screen.title('A simple snake game')
-screen.tracer(1)
+screen.tracer(0)
 
 
 # set up the starting snake
@@ -34,7 +34,7 @@ screen.onkey(snake.right, "Right")
 while game_on:
     screen.update()
     snake.forward()
-    time.sleep(0.1)
+    time.sleep(0.2)
 
     # detect collision
     if snake.head.distance(dot) < 15:
