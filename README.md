@@ -1,1 +1,3 @@
-# a-simple-python-snake-game-with-turtle
+# A Simple Python Snake Game with Turtle
+
+![alt text](img/snake.png "Title")
