@@ -19,6 +19,7 @@ game_on = True
 snake = Snake('white')
 dot = DotFood('blue')
 score = ScoreBoard()
+score.FONT_SIZE = 10
 
 
 # Moving the snake
@@ -39,7 +40,19 @@ while game_on:
     if snake.head.distance(dot) < 15:
 
         dot.refresh()
+        snake._extend()
         score.increase_score()
+
+    # detect collision with the wall
+    if snake.head.xcor() < -290 or snake.head.xcor() > 290 or snake.head.ycor() < -290 or snake.head.ycor() > 290:
+        game_on = False
+        score.game_over()
+
+    # detect collision with tail
+    for square in snake.squares[1:]:
+        if snake.head.distance(square) < 10:
+            game_on = False
+            score.game_over()
 
 
 screen.exitonclick()

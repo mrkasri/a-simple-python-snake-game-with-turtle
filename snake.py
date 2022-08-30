@@ -11,18 +11,25 @@ class Snake:
     DIRECTION_RIGHT = 0
 
     def __init__(self, color: str = 'white') -> None:
+        self.color = color
         self.squares = []
-        self.start_snake(color)
+        self.start_snake(self.color)
         self.head = self.squares[0]
 
     def start_snake(self, color: str):
 
         for position in Snake.START_POSITIONS:
-            new_square = Turtle(shape='square')
-            new_square.penup()
-            new_square.color(color)
-            new_square.goto(position)
-            self.squares.append(new_square)
+            self.add_square(color, position)
+
+    def add_square(self, color: str, position: tuple):
+        new_square = Turtle(shape='square')
+        new_square.penup()
+        new_square.color(color)
+        new_square.goto(position)
+        self.squares.append(new_square)
+
+    def _extend(self):
+        self.add_square(self.color, self.squares[-1].position())
 
     def forward(self):
         for i in range(len(self.squares)-1, 0, -1):
